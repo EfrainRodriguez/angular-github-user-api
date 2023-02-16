@@ -1,0 +1,55 @@
+<div class="mt-5" *ngIf="users.length > 0; else emptyUserList">
+  <div class="container d-flex justify-content-center py-5 align-items-center">
+    <span>Items per page</span>
+    <select
+      (ngModelChange)="onPageSizeChange($event)"
+      [(ngModel)]="perPage"
+      class="form-select mx-3"
+      style="max-width: max-content"
+    >
+      <option selected value="12">12</option>
+      <option value="24">24</option>
+      <option value="48">48</option>
+      <option value="100">100</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-lg-2 col-md-6 col-sm-12 mb-4" *ngFor="let user of users">
+      <div class="card" style="min-width: 200px">
+        <img class="card-img-top" src="{{ user.avatar_url }}" alt="character" />
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title text-capitalize">{{ user.login }}</h5>
+            <h5 class="card-title text-secondary">{{ user.id }}</h5>
+          </div>
+          <hr />
+          <a
+            href="{{ user.html_url }}"
+            class="btn btn-secondary"
+            target="_blank"
+            >View Profile</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-flex justify-content-center py-5 align-items-center">
+    <span>Items per page</span>
+    <select
+      (ngModelChange)="onPageSizeChange($event)"
+      [(ngModel)]="perPage"
+      class="form-select mx-3"
+      style="max-width: max-content"
+    >
+      <option selected value="12">12</option>
+      <option value="24">24</option>
+      <option value="48">48</option>
+      <option value="100">100</option>
+    </select>
+  </div>
+</div>
+
+<ng-template #emptyUserList>
+  <div class="alert alert-info" role="alert">No users found.</div>
+</ng-template>
